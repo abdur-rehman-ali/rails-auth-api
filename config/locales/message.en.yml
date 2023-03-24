@@ -1,0 +1,11 @@
+en:
+  registrations:
+    create:
+      success: "Sign up successfully!!!"
+      failure: "Failed to sign up"
+  sessions:
+    create:
+      success: "User signed in successfully"
+    destroy:
+      success: "User logged out"
+      failure: "User has no active session"

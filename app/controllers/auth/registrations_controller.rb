@@ -6,9 +6,9 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   private
   def respond_with(resource, options={})
     if resource.persisted?
-      render json: { message: 'Signed Up successfully', status: :ok, data: resource }
+      render json: { data: UserSerializer.new(resource), message: I18n.t('registrations.create.success') }, status: :created
     else
-      render json: { message: "Signed Up failed. User can't be created", status: :unprocessable_entity, errors: resource.errors.full_messages }
+      render json: { errors: resource.errors.full_messages , message: I18n.t('registrations.create.failure') }, status: :unprocessable_entity
     end
   end
 end

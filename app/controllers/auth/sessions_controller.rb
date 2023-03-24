@@ -5,7 +5,7 @@ class Auth::SessionsController < Devise::SessionsController
 
   private
   def respond_with(resource, options={})
-    render json: { message: 'User signed in successfully', status: :ok, data: current_user }
+    render json: { message: I18n.t('sessions.create.success'), data: UserSerializer.new(current_user) }, status: :ok
   end
 
   def respond_to_on_destroy
@@ -15,11 +15,11 @@ class Auth::SessionsController < Devise::SessionsController
   end
 
   def log_out_success
-    render json: { message: "User logged out." }, status: :ok
+    render json: { message: I18n.t('sessions.destroy.success') }, status: :ok
   end
 
   def log_out_failure
-    render json: { message: "User has no active session."}, status: :unauthorized
+    render json: { message: I18n.t('sessions.destroy.failure') }, status: :unauthorized
   end
 
   # def respond_to_on_destroy
