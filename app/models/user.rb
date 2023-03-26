@@ -14,10 +14,13 @@
 #  updated_at             :datetime         not null
 #  jti                    :string           not null
 #  username               :string           not null
+#  role                   :integer          default("writer")
 #
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true
+
+  enum role: { writer: 0, admin: 1 }
 
   include Devise::JWT::RevocationStrategies::JTIMatcher
   devise :database_authenticatable, :registerable,
