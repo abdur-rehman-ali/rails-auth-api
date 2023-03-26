@@ -13,9 +13,12 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  jti                    :string           not null
+#  username               :string           not null
 #
 class User < ApplicationRecord
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :username, presence: true
+  
   include Devise::JWT::RevocationStrategies::JTIMatcher
   devise :database_authenticatable, :registerable,
          :jwt_authenticatable, jwt_revocation_strategy: self
