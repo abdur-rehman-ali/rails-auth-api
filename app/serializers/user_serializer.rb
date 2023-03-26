@@ -14,7 +14,8 @@
 #  updated_at             :datetime         not null
 #  jti                    :string           not null
 #  username               :string           not null
+#  role                   :integer          default("writer")
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :email, :username
+  attributes :id, :email, :username, :role
 end
