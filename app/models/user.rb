@@ -13,6 +13,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  jti                    :string           not null
+#  username               :string           not null
 #
 class User < ApplicationRecord
   validates :email, presence: true
